@@ -14,6 +14,12 @@ import jakarta.persistence.PersistenceContext;
 public class PrenotazioneService {
 	@Autowired
 	PrenotazioneRepository prenotazioneRepo;
+
+	@Autowired
+	UserService userServ;
+
+	@Autowired
+	PostazioneService postazioneSrv;
 	@PersistenceContext
 
 

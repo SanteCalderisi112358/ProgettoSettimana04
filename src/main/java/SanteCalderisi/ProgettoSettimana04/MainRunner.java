@@ -14,6 +14,7 @@ import SanteCalderisi.ProgettoSettimana04.Entities.Postazione;
 import SanteCalderisi.ProgettoSettimana04.Entities.Prenotazione;
 import SanteCalderisi.ProgettoSettimana04.Entities.TipoPostazione;
 import SanteCalderisi.ProgettoSettimana04.Entities.User;
+import SanteCalderisi.ProgettoSettimana04.ExceptionCustom.ItemNotFoundException;
 import SanteCalderisi.ProgettoSettimana04.Services.EdificioService;
 import SanteCalderisi.ProgettoSettimana04.Services.PostazioneService;
 import SanteCalderisi.ProgettoSettimana04.Services.PrenotazioneService;
@@ -136,7 +137,7 @@ public class MainRunner implements CommandLineRunner {
 		
 
 		Prenotazione prenotazione01 = new Prenotazione(LocalDate.now());
-		System.err.println(prenotazione01);
+
 
 		/*
 		 * Istanzio una nuova prenotazione che controlla che la postazione non sia
@@ -145,34 +146,27 @@ public class MainRunner implements CommandLineRunner {
 		 * messaggio che dice che la postazione è già occupata
 		 */
 
-//		try {
-//			User userChePrenota = userSrv.findById(209);
-//			System.err.println(userChePrenota);
-//			Postazione postazioneCheUserVuolePrenotare = postazioneSrv.findById(208);
-//			System.err.println(postazioneCheUserVuolePrenotare);
-//
-//			prenotazione01.setPostazione(postazioneCheUserVuolePrenotare);
-//			prenotazione01.setUser(userChePrenota);
-//			System.err.println(prenotazione01);
-//			prenotazioneSrv.saveAndUpdatePostazioneAndUser(prenotazione01, userSrv, postazioneSrv);
-//
-//		} catch (ItemNotFoundException ex) {
-//			System.err.println(ex.getMessage());
-//		}
+		try {
+			User userChePrenota = userSrv.findById(209);
+			System.err.println(userChePrenota);
+			Postazione postazioneCheUserVuolePrenotare = postazioneSrv.findById(208);
+			System.err.println(postazioneCheUserVuolePrenotare);
 
-		postazioneSrv.findByTipoPostazione(TipoPostazione.OPEN_SPACE);
+			prenotazione01.setPostazione(postazioneCheUserVuolePrenotare);
+			prenotazione01.setUser(userChePrenota);
+			System.err.println(prenotazione01);
+			prenotazioneSrv.saveAndUpdatePostazioneAndUser(prenotazione01, userSrv, postazioneSrv);
+
+		} catch (ItemNotFoundException ex) {
+			System.err.println(ex.getMessage());
+		}
+
+		/* NON FUNZIONA */
+		// postazioneSrv.findByTipoPostazione(TipoPostazione.OPEN_SPACE);
 
 
 
 
-		// System.err.println(aldo.toString());
-		// User user01 = (User) ctx.getBean("getUser01");
-		// userSrv.save(user01);
-//		try {
-//			// userSrv.findByIdAndDelete(2);
-//		} catch (ItemNotFoundException ex) {
-//			System.err.println(ex.getMessage());
-//		}
 
 
 

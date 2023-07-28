@@ -1,5 +1,6 @@
 package SanteCalderisi.ProgettoSettimana04.Services;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,10 @@ public class PostazioneService implements IPostazioneDao {
 
 		List<Postazione> postazioniPerTipo = postazioneRepo.findByTipoPostazione(tipoPostazione);
 
-
 		for (Postazione postazione : postazioniPerTipo) {
 			System.out.println(postazione.toString());
 		}
 	}
 
-//	public List<Postazione> findByCitta(String citta) {
-//		return postazioneRepo.findByCitta(citta);
-//	}
 
 }
