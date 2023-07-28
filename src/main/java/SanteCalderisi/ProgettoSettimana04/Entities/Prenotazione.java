@@ -9,13 +9,16 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @Builder
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
 public class Prenotazione {
 	@Id
 	@GeneratedValue
@@ -27,13 +30,19 @@ public class Prenotazione {
 	@ManyToOne
 	private Postazione postazione;
 
-	public Prenotazione(LocalDate dataInizio, User user, Postazione postazione) {
+	public Prenotazione(LocalDate dataInizio) {
 
 
 		this.dataInizio = dataInizio;
 		this.dataFine = dataInizio.plusDays(1);
-		this.user = user;
-		this.postazione = postazione;
+
 	}
+
+	@Override
+	public String toString() {
+		return "Prenotazione [dataInizio=" + dataInizio + ", dataFine=" + dataFine + ", user=" + user + ", postazione="
+				+ postazione + "]";
+	}
+
 
 }

@@ -17,8 +17,9 @@ public class UserService implements IUserDao {
 	@Autowired
 	UserRepository userRepo;
 
+
 	public void save(User user) {
-		// eventuale logica addizionale custom...
+
 		userRepo.save(user);
 		System.err.println(user.getNome() + " è stato salvato correttamente!");
 	}

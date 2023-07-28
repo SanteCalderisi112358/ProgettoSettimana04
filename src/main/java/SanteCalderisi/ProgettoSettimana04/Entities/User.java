@@ -1,5 +1,6 @@
 package SanteCalderisi.ProgettoSettimana04.Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -27,7 +28,7 @@ public class User {
 	private String cognome;
 	private String email;
 	@OneToMany
-	private List<Prenotazione> prenotazioniPerUser;
+	private List<Prenotazione> prenotazioniPerUser = new ArrayList<Prenotazione>();
 
 	public User(String username, String nome, String cognome, String email) {
 		super();

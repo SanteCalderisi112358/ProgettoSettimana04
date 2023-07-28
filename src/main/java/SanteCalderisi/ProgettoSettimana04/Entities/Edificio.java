@@ -1,5 +1,6 @@
 package SanteCalderisi.ProgettoSettimana04.Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -25,7 +26,7 @@ public class Edificio {
 	private String indirizzo;
 	private String citta;
 	@OneToMany(mappedBy = "edificio")
-	private List<Postazione> postazioniPerEdificio;
+	private List<Postazione> postazioniPerEdificio = new ArrayList<Postazione>();
 
 	@Builder
 	public Edificio(String nome, String indirizzo, String citta) {

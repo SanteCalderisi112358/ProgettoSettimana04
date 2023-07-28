@@ -16,47 +16,31 @@ public class PostazioneService implements IPostazioneDao {
 	@Autowired
 	PostazioneRepository postazioneRepo;
 
-	@Override
 	public void save(Postazione postazione) {
 		postazioneRepo.save(postazione);
-		System.err.println("La postazione: " + postazione.toString() + " è stato salvato correttamente!");
-
+		System.err.println("La postazione: " + postazione + " è stata salvata correttamente!");
 	}
 
-	@Override
-	public void findByIdAndUpdate(int id, Postazione postazione) throws ItemNotFoundException {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void findByIdAndDelete(int id) throws ItemNotFoundException {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public Postazione findById(int id) throws ItemNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		return postazioneRepo.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
 	}
 
-	@Override
-	public List<Postazione> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public void findByTipoPostazione(TipoPostazione tipoPostazione) {
+
+		List<Postazione> postazioniPerTipo = postazioneRepo.findByTipoPostazione(tipoPostazione);
+
+
+		for (Postazione postazione : postazioniPerTipo) {
+			System.out.println(postazione.toString());
+		}
 	}
 
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Postazione> findByTipoPostazione(TipoPostazione tipoPostazione) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public List<Postazione> findByCitta(String citta) {
+//		return postazioneRepo.findByCitta(citta);
+//	}
 
 }

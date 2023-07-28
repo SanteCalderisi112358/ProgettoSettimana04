@@ -1,5 +1,6 @@
 package SanteCalderisi.ProgettoSettimana04.Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -19,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-
+@NoArgsConstructor
 public class Postazione {
 	@Id
 	@GeneratedValue
@@ -33,7 +35,7 @@ public class Postazione {
 	private Edificio edificio;
 
 	@OneToMany(mappedBy = "postazione")
-	private List<Prenotazione> prenotazioniPerPostazione;
+	private List<Prenotazione> prenotazioniPerPostazione = new ArrayList<Prenotazione>();
 
 	public Postazione(String descrizione, TipoPostazione tipoPostazione, int capienzaMax) {
 
